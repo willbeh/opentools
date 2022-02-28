@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@bwl-opentools/api-interfaces';
+import { SideNavItem } from '@bwl-opentools/models/ui/side-nav-item';
 
 @Component({
   selector: 'bwl-opentools-root',
@@ -8,6 +7,8 @@ import { Message } from '@bwl-opentools/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+  items: SideNavItem[] = [
+    { name: 'Home', link: '/' },
+    { name: 'About', link: '/about' },
+  ];
 }

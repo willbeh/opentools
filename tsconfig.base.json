@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@bwl-opentools/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@bwl-opentools/models/*": ["libs/shared/models/src/lib/*"]
+      "@bwl-opentools/models/*": ["libs/shared/models/src/lib/*"],
+      "@bwl-opentools/layouts": ["libs/ui/layouts/src/index.ts"]
     },
     "strictPropertyInitialization": false
   },

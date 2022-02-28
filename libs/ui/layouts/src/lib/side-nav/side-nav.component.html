@@ -1,0 +1,12 @@
+<mat-toolbar>
+  <ng-content></ng-content>
+</mat-toolbar>
+<mat-nav-list>
+  <a
+    *ngFor="let item of items"
+    mat-list-item
+    [routerLink]="item.link"
+    routerLinkActive="active-list-item"
+    >{{ item.name }}</a
+  >
+</mat-nav-list>
