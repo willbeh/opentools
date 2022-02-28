@@ -8,4 +8,5 @@ import { SideNavItem } from '@bwl-opentools/models/ui/side-nav-item';
 })
 export class SideNavComponent {
   @Input() items: SideNavItem[];
+  @Input() title: string;
 }
