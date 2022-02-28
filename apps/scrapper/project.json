@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/scrapper",
         "index": "apps/scrapper/src/index.html",
@@ -14,8 +16,14 @@
         "polyfills": "apps/scrapper/src/polyfills.ts",
         "tsConfig": "apps/scrapper/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/scrapper/src/favicon.ico", "apps/scrapper/src/assets"],
-        "styles": ["apps/scrapper/src/styles.scss"],
+        "assets": [
+          "apps/scrapper/src/favicon.ico",
+          "apps/scrapper/src/assets"
+        ],
+        "styles": [
+          "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/scrapper/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -83,7 +91,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/scrapper"],
+      "outputs": [
+        "coverage/apps/scrapper"
+      ],
       "options": {
         "jestConfig": "apps/scrapper/jest.config.js",
         "passWithNoTests": true
