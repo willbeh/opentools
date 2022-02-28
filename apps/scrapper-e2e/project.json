@@ -1,0 +1,28 @@
+{
+  "root": "apps/scrapper-e2e",
+  "sourceRoot": "apps/scrapper-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/scrapper-e2e/cypress.json",
+        "devServerTarget": "scrapper:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "scrapper:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/scrapper-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["scrapper"]
+}

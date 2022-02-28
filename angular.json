@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "projects": {
+    "api": "apps/api",
+    "api-interfaces": "libs/api-interfaces",
+    "scrapper": "apps/scrapper",
+    "scrapper-e2e": "apps/scrapper-e2e"
+  }
+}
