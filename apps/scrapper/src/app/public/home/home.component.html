@@ -1,3 +1,26 @@
 <div class="container">
-  <p>home works!</p>
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <mat-form-field class="input-url">
+      <mat-label>URL</mat-label>
+      <input matInput formControlName="url" value="" />
+      <mat-error *ngIf="form.get('url')?.hasError('pattern')">
+        Please enter a valid url address
+      </mat-error>
+      <mat-error *ngIf="form.get('url')?.hasError('required')">
+        URL is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="form.invalid || loading"
+      >
+        {{ loading ? 'Scrapping...' : 'Run Scrapper' }}
+      </button>
+    </div>
+  </form>
+  <div class="mt">
+    <app-result [result]="result"></app-result>
+  </div>
 </div>

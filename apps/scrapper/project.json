@@ -2,7 +2,7 @@
   "projectType": "application",
   "root": "apps/scrapper",
   "sourceRoot": "apps/scrapper/src",
-  "prefix": "bwl-opentools",
+  "prefix": "app",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
