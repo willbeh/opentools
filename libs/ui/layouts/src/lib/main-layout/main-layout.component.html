@@ -15,7 +15,8 @@
         *ngFor="let item of items"
         mat-list-item
         [routerLink]="item.link"
-        routerLinkActive="active-list-item"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="active mat-list-item-focus"
         >{{ item.name }}</a
       >
     </mat-nav-list>

@@ -8,21 +8,21 @@ export interface Scrapper {
     ogimage?: string;
     ogdescription?: string;
   };
-  h1?: ScapperDetail[];
-  h2?: ScapperDetail[];
-  h3?: ScapperDetail[];
-  p?: ScapperDetail[];
-  img?: ScapperImage[];
+  h1?: ScrapperDetail[];
+  h2?: ScrapperDetail[];
+  h3?: ScrapperDetail[];
+  p?: ScrapperDetail[];
+  img?: ScrapperImage[];
   [key: string]: unknown;
 }
 
-export interface ScapperDetail {
+export interface ScrapperDetail {
   id?: string;
   class?: string;
   text?: string;
 }
 
-export interface ScapperImage {
+export interface ScrapperImage {
   id?: string;
   class?: string;
   alt?: string;

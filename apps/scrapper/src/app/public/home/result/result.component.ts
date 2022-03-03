@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Scrapper } from '@bwl-opentools/models/scrapper/scrapper';
+import {
+  Scrapper,
+  ScrapperDetail,
+} from '@bwl-opentools/models/scrapper/scrapper';
 
 @Component({
   selector: 'app-result',
@@ -8,4 +11,10 @@ import { Scrapper } from '@bwl-opentools/models/scrapper/scrapper';
 })
 export class ResultComponent {
   @Input() result: Scrapper;
+
+  displayItems = ['h1', 'h2', 'h3', 'p'];
+
+  getItem(key: string) {
+    return this.result[key] as ScrapperDetail[];
+  }
 }

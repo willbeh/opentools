@@ -2,4 +2,8 @@
 
 This is a set of opensource tools
 
-# Scrapper
+## Scrapper
+
+Retrieve set of data from a website
+
+[Swagger] (https://opentools-api.bwltech.com/swagger/)
