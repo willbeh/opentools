@@ -74,11 +74,11 @@ export class ScrapperService {
 
       const links: ScrapperLink[] = [];
       document.querySelectorAll('a').forEach((a) => {
-        if (a.href) {
+        if (a.href && a.href.includes('javascript:void(0)')) {
           links.push({
             id: a.id,
             class: a.className,
-            text: a.textContent,
+            text: a.textContent.trim(),
             href: a.href,
           });
         }
