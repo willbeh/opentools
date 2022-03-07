@@ -1,5 +1,10 @@
 import { CreateScrapperDto } from '@bwl-opentools/models/scrapper/create-scrapper.dto';
-import { Scrapper } from '@bwl-opentools/models/scrapper/scrapper';
+import {
+  Scrapper,
+  ScrapperDetail,
+  ScrapperImage,
+  ScrapperLink,
+} from '@bwl-opentools/models/scrapper/scrapper';
 import { Injectable } from '@nestjs/common';
 import * as puppeteer from 'puppeteer';
 
@@ -32,7 +37,7 @@ export class ScrapperService {
 
     const result = await page.evaluate(() => {
       function querySelectorAll(selector: string, trim = true) {
-        const items = [];
+        const items: ScrapperDetail[] = [];
         document
           .querySelectorAll(selector)
           .forEach((item: HTMLElement | HTMLMetaElement) => {
@@ -55,7 +60,7 @@ export class ScrapperService {
         return meta.content.trim();
       }
 
-      const images = [];
+      const images: ScrapperImage[] = [];
       document.querySelectorAll('img').forEach((img) => {
         if (img.src) {
           images.push({
@@ -66,6 +71,19 @@ export class ScrapperService {
           });
         }
       });
+
+      const links: ScrapperLink[] = [];
+      document.querySelectorAll('a').forEach((a) => {
+        if (a.href) {
+          links.push({
+            id: a.id,
+            class: a.className,
+            text: a.textContent,
+            href: a.href,
+          });
+        }
+      });
+
       return {
         meta: {
           keywords: querySelector('meta[name="keywords"]'),
@@ -79,6 +97,7 @@ export class ScrapperService {
         h2: querySelectorAll('h2'),
         h3: querySelectorAll('h3'),
         img: images,
+        a: links,
         p: querySelectorAll('p'),
       } as Scrapper;
     });

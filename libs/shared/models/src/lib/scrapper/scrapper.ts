@@ -13,6 +13,7 @@ export interface Scrapper {
   h3?: ScrapperDetail[];
   p?: ScrapperDetail[];
   img?: ScrapperImage[];
+  a?: ScrapperLink[];
   [key: string]: unknown;
 }
 
@@ -27,4 +28,11 @@ export interface ScrapperImage {
   class?: string;
   alt?: string;
   src?: string;
+}
+
+export interface ScrapperLink {
+  id?: string;
+  class?: string;
+  text?: string;
+  href?: string;
 }
