@@ -41,10 +41,7 @@ export class ScrapperService {
         document
           .querySelectorAll(selector)
           .forEach((item: HTMLElement | HTMLMetaElement) => {
-            let content = item.textContent;
-            if (item instanceof HTMLMetaElement) {
-              content = item.content;
-            }
+            const content = item.textContent;
 
             items.push({
               id: item.id,
@@ -57,7 +54,7 @@ export class ScrapperService {
 
       function querySelector(selector: string) {
         const meta = document.querySelector(selector) as HTMLMetaElement;
-        return meta.content.trim();
+        return meta?.content.trim() ?? '';
       }
 
       const images: ScrapperImage[] = [];
