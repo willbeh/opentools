@@ -14,6 +14,7 @@ export interface Scrapper {
   p?: ScrapperDetail[];
   img?: ScrapperImage[];
   a?: ScrapperLink[];
+  tables?: ScrapperTable[];
   [key: string]: unknown;
 }
 
@@ -35,4 +36,21 @@ export interface ScrapperLink {
   class?: string;
   text?: string;
   href?: string;
+}
+
+export interface ScrapperTable {
+  head?: ScrapperTr[];
+  body?: ScrapperTr[];
+}
+
+export interface ScrapperTr {
+  tr?: ScrapperTd[] | ScrapperTh[];
+}
+
+export interface ScrapperTd {
+  td: string | number | boolean;
+}
+
+export interface ScrapperTh {
+  th: string | number | boolean;
 }

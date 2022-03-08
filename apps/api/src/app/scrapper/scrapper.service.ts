@@ -57,6 +57,36 @@ export class ScrapperService {
         return meta?.content.trim() ?? '';
       }
 
+      function queryTable() {
+        const results = [];
+        const tables = document.querySelectorAll('table');
+        tables.forEach((table) => {
+          const tr = [];
+          const th = [];
+          const head = table.querySelector('thead');
+          if (head) {
+            const thead = head.querySelectorAll('th');
+            thead.forEach((h) => {
+              th.push({ th: h.textContent.trim() });
+            });
+          }
+          const body = table.querySelector('tbody');
+          const rows = body
+            ? body.querySelectorAll('tr')
+            : table.querySelectorAll('tr');
+          rows.forEach((row) => {
+            const columns = row.querySelectorAll('td');
+            const td = [];
+            columns.forEach((column) => {
+              td.push({ td: column.textContent.trim() });
+            });
+            tr.push({ tr: td });
+          });
+          results.push({ head: th, body: tr });
+        });
+        return results;
+      }
+
       const images: ScrapperImage[] = [];
       document.querySelectorAll('img').forEach((img) => {
         if (img.src) {
@@ -71,7 +101,7 @@ export class ScrapperService {
 
       const links: ScrapperLink[] = [];
       document.querySelectorAll('a').forEach((a) => {
-        if (a.href && a.href.includes('javascript:void(0)')) {
+        if (a.href && !a.href.includes('javascript:void(0)')) {
           links.push({
             id: a.id,
             class: a.className,
@@ -96,6 +126,7 @@ export class ScrapperService {
         img: images,
         a: links,
         p: querySelectorAll('p'),
+        tables: queryTable(),
       } as Scrapper;
     });
 
